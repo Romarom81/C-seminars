@@ -1,2 +1,10 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿// Программа вычесления функции возведения числв в квадрат:
+Console.WriteLine ("Введите любое целое число:");
+int number = Convert.ToInt32( Console.ReadLine ());
+
+OurPower (number); //вызов метода
+
+void OurPower (int currentNumber) 
+{
+     Console.WriteLine(currentNumber * currentNumber);
+}
