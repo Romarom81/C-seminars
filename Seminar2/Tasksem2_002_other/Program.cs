@@ -1,7 +1,7 @@
 ﻿
 Console.WriteLine ("Введите число:");
 string number = Console.ReadLine ();
-Triplenumber (number);
+Triplenumber  (number);
 void Triplenumber (string number)
 {
    Console.WriteLine (number);
