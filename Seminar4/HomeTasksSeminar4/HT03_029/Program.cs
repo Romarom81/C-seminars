@@ -1,63 +1,58 @@
 ﻿// Напишите программу, которая задаёт массив из 8 случайных целых чисел
 //  и выводит отсортированный по модулю массив.
-int[] array = new int[8];
+Console.Write("Введите количество аргументов массива:");
+int size = Convert.ToInt32(Console.ReadLine());
+int[] array = new int[size];
 Random Rand = new Random();
-void FillArray()
+Console.WriteLine($" Задан массив {size} рандомных чисел:");
+void FillArray()// метод заполенние массива произвольными значениями  от -10 до 10
 {
     for (int i = 0; i < array.Length; i++)
     {
-        array[i] = Rand.Next(-10, 100);
-        Console.Write($" {array[i]}");
+        array[i] = Rand.Next(-10, 10);
+        Console.Write($"{array[i]}  ");
 
     }
-    Console.WriteLine(" ");
 }
 FillArray();
-
-Console.WriteLine(" ");
-void Modul()
+void Modul() // метод перевод в массив по модулю
 {
     for (int i = 0; i < array.Length; i++)
     {
         array[i] = Math.Abs(array[i]);
-        Console.Write($" {array[i]}");
     }
-    Console.WriteLine("  ");
 }
-Modul();
+//Modul();
 Console.WriteLine(" ");
-void Sort()
+void Sort(int[] CurrArray) // метод сортировка массива пузырьком
 {
-    int index = 0;
-    int length = array.Length;
-    while (index < length)
+    int temp;
+    int length = CurrArray.Length;
+    for (int i = length - 1; i > 0; i--)
     {
-        int temp;
-        int min = array[0];
-        if (array[index] < min)
+        for (int j = 0; j < i; j++)
         {
-            temp = min;
-            min = array[index];
-            array[index] = temp;
+            if (Math.Abs(CurrArray[j]) > Math.Abs (CurrArray[j + 1]))
+            {
+                temp = CurrArray[j];
+                CurrArray[j] = CurrArray[j + 1];
+                CurrArray[j + 1] = temp;
+            }
         }
-        index++;
-        
     }
-
+    
 }
-Sort();
-
-void PrintArray(int[] array)
+Sort(array);
+void PrintArray(int[] array) // метод печати массива
 {
-    Console.WriteLine(" Сортированный массив: ");
+    Console.WriteLine(" Отсортированный по модулю массив: ");
     int length = array.Length;
     for (int i = 0; i < length; i++)
     {
 
-        Console.Write($" {array[i]}");
-        
+        Console.Write($"{array[i]}   ");
+
     }
     Console.WriteLine(" ");
 }
-
 PrintArray(array);
